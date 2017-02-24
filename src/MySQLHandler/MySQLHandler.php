@@ -40,7 +40,7 @@ class MySQLHandler extends AbstractProcessingHandler
     /**
      * @var array default fields that are stored in db
      */
-    private $defaultfields = array('id', 'channel', 'level', 'message', 'time');
+    private $defaultfields = array('channel', 'level', 'message', 'time');
 
     /**
      * @var string[] additional fields to be stored in the database
@@ -103,7 +103,8 @@ class MySQLHandler extends AbstractProcessingHandler
         $removedColumns = array_diff(
             $actualFields,
             $this->additionalFields,
-            $this->defaultfields
+            $this->defaultfields,
+            ['id']
         );
         $addedColumns = array_diff($this->additionalFields, $actualFields);
 
